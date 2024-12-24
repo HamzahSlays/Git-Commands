@@ -23,23 +23,23 @@ Run the commands:
 - ‘git config –global user.name <”Your Name”>’
 - ‘git config –global user.email  <”Your email”>’
 - ‘git config –list’
-After setting up our user name and email address, we can use all the git commands now.
+After setting up our user-name and email address, we can use all the git commands now.
 
 
 
 
 Git commands: 
 
-- `git init`: Initialized empty Git repository
-  - Creates a hidden `.git` folder
-  - Initializes basic Git configuration
-  - Enables Git tracking for that folder
-  - Inside the `.git` folder:
-    - `HEAD` (tracks current branch)
-    - `config` (repository settings)
-    - `objects/` (stores all our files)
-    - `refs/` (tracks branches)
-    - `hooks/` (custom scripts)
+- `git init`: Initialized empty Git repository 
+ Creates a hidden `.git` folder
+ Initializes basic Git configuration
+ Enables Git tracking for that folder
+ Inside the `.git` folder:
+ `HEAD` (tracks current branch)
+ `config` (repository settings)
+ `objects/` (stores all our files)
+ `refs/` (tracks branches)
+ `hooks/` (custom scripts)
 
 Before `git init`:
   - Just a normal folder
@@ -56,19 +56,19 @@ How can we make changes to the repository after creating a remote repository on 
 
 To make changes in the remote repository we have to bring a remote repository locally on our system.
 -  ‘git clone <URL of the remote repository>’: git clone makes a complete copy of a remote repository on our local machine. It:
-1.	Downloads all files and version history
-2.	Sets up local Git repository
-3.	Creates remote tracking branch
-4.	Automatically configures "origin" remote pointing to source repository
+Downloads all files and version history
+Sets up local Git repository
+Creates remote tracking branch
+Automatically configures "origin" remote pointing to source repository
 
 - `git status`: Tracks the history of changes made in the repository. Shows which files have been added, modified, or deleted.
-- ‘git add’: This command is used to stage changes before committing them
 - `git add .` : Stages ALL changes in the current directory and its subdirectories
 - `git add <filename>` : Stages changes only for the specified file
 
   Example: 
   - `git add names.txt` : Only stages changes in names.txt
   - Other modified files remain unstaged
+
 
 - ‘git restore <file name> / git restore --staged <file name>’: We can unstage files using this 
 
@@ -78,11 +78,13 @@ We can always rely on `git status` to see what's staged (green) and what's not (
 Before moving forward let’s know what's a staging area and a commit?
 
 What is Staging Area?
-- Think of the staging area as a "preparation zone" or "packing area"
-- It's like a box where you put things before shipping them
-- Files you want to commit must go through staging first
+ Think of the staging area as a "preparation zone" or "packing area"
+ It's like a box where you put things before shipping them
+ Files you want to commit must go through staging first
 
 Why use a Staging Area?
+
+Let’s take an example
 - We modified 3 files: A.txt, B.txt, C.txt
 - We want to commit A.txt and B.txt together, but C.txt separately
 - Staging lets us:
@@ -90,25 +92,24 @@ Why use a Staging Area?
   2. Then stage and commit C.txt later
 
 What is a Commit?
-- A commit is like taking a snapshot of our project at a specific point in time
-- Each commit has:
-  - A unique ID (hash)
-  - A message describing what changed
-  - The actual changes made to files
-  - Information about when and who made the changes
+ A commit is like taking a snapshot of our project at a specific point in time
+ Each commit has:
+ A unique ID (hash)
+ A message describing what changed
+ The actual changes made to files
+ Information about when and who made the changes
 
 “Think of commits like saving a video game:”
-- Each save is a different point in our progress
-- We can go back to any save point if needed
-- Each save has a description of what we achieved
-- We can see our whole journey through all our saves
+ Each save is a different point in our progress
+ We can go back to any save point if needed
+ Each save has a description of what we achieved
+ We can see our whole journey through all our saves
 
 Why do we basically make commits?
-- Track History: See what changed, when, and why
-- Backup Points: Can return to any previous commit if something breaks
-- Collaboration: Other developers can understand our changes
+ Track History: See what changed, when, and why
+ Backup Points: Can return to any previous commit if something breaks
+ Collaboration: Other developers can understand our changes
 
-- ‘git commit’: Creates a snapshot of our staged changes
 - `git commit -m "message"` : Creates a commit with our staged changes (The -m flag is for adding a commit message).
 Example:
  `git commit -m "Added new student names"
@@ -116,7 +117,7 @@ Example:
 So, the typical workflow looks like:
 - Firstly, make some changes to your files
 - `git status` (check what's changed)
-- `git add` (stage specific files or all files)
+- `git add <file name>` (stage specific files or all files)
 - `git status` (verify what's staged)
 - `git commit -m "message"` (commit the staged changes)
 
@@ -150,23 +151,25 @@ Create a new repository or open an existing a repository and then copy the URL o
 After the connection has been made whatever changes and whenever the changes were made to our project/folder will reflect on the remote repository.
 Since the connection has been made, so whenever we make any changes to our local project/folder we’ll not use the ‘git remote add origin <URL>’ again and again after every commit instead we’ll use the:
 -‘git push origin main’: This command uploads your local commits from the main branch of your repository to the remote repository named origin (usually GitHub).
+
 -‘git remote add upstream <URL of the repo to be forked>’: By convention, the original project from where we have forked our project is known as the upstream. This command is used to link a second remote repository to your local project, typically for tracking updates from the original source repository (upstream). It is commonly used in forking workflows on GitHub.
-
 Now you cannot make changes to anyone’s project directly. We have to first fork it, since we cannot modify anyone’s project without their consent. But since on forking we basically create a copy of that project on your account, we can modify anything with that copy.
-
 Now to reflect to your changes to the main project you have to create a pull request, so that the owner of the original project can merge your changes.
--‘git remote -v’- This command lists all remote repositories linked to your local Git project, showing their URLs and access methods.
+
+-‘git remote -v: This command lists all remote repositories linked to your local Git project, showing their URLs and access methods.
+
+
 
 Observation: 
-When we want bring a remote repository (that we created) locally we use the git remote add origin <URL> but when we want to add a forked remote repository locally we use the git clone command.
+When we want bring a remote repository (that we created) locally we use the ‘git remote add origin <URL>’ but when we want to add a forked remote repository locally we use the git clone command.
 
 Conclusion:
-For ANY repository (forked or not), you typically start with git clone when you're setting up the project locally for the first time. git clone does several things:
+For ANY repository (forked or not), you typically start with ‘git clone <URL>’ when you're setting up the project locally for the first time. git clone does several things:
 1.	Downloads all the code
 2.	Sets up the local Git repository
 3.	Automatically adds the "origin" remote
 
-You DON'T usually use git remote add origin as your first step - this command is mainly used when:
+You DON'T usually use ‘git remote add origin <URL>’ as your first step - this command is mainly used when:
 1.	You created a local repository first (git init)
 2.	You now want to connect it to a remote repository
 
@@ -179,7 +182,6 @@ So, after learning push we can say our workflow looks like:
 
 
 What is a Branch?
-
 A branch is a separate line of development in Git that lets you:
 1. Work on features/fixes isolated from main code
 2. Track parallel versions of code
@@ -193,13 +195,14 @@ Branch Management
 - `git checkout -b <feature-name>`: Create and swich in one command
 - `git branch`: List branches (asterisk * shows current branch)
 
+
 Working with Branches:
 -`git push <branch name>`: Pushes the changes to the specified branch
-- Changes made in one branch stay in that branch
-- Files/changes unique to feature branch won't be visible when on main branch
-- Need to merge feature branch into main to get changes there
+ Changes made in one branch stay in that branch
+ Files/changes unique to feature branch won't be visible when on main branch
+ Need to merge feature branch into main to get changes there
 
-Steps for merging
+Steps for merging:
 1. `git checkout main`: Switch to main branch
 2. `git merge feature`: Merge feature branch
 3. `git push origin main`: Push merged changes
@@ -213,9 +216,7 @@ We have already learnt about this command that it makes a complete copy of a rem
 Now, after cloning the remote repository we are ready to make changes to the local repository thus created. But before moving forward we must learn a way to commit while working on someone else’s project. We should always create a separate branch for our personal commits.
 Working directly on the main branch isn't recommended. 
 Here's a real-world example:
-
 Imagine a popular open-source text editor like VS Code:
-
 1. A developer notices that some characters aren't displaying correctly.
 2. Instead of changing VS Code's main code directly:
    - They fork the VS Code repository
@@ -248,23 +249,42 @@ This is why it's recommended to:
 
 Syncing the forked repository with the original (upstream) repository
 
-1. After PR merge, changes appear in upstream main but not your fork
-2. Commands to use for syncing our forked repo with the original repo:
+After PR merge, the changes appear only in upstream main but not your fork.
+So, Commands to use for syncing our forked repo with the original repo:
 - ‘git fetch --all –prune’: Fetches all updates including deleted refs
 - ‘git reset --hard upstream/main’: Forces local branch to match upstream
  - ‘git push’: Updates our fork
-  This synchronizes our fork's main branch with upstream, avoiding manual branch switching on GitHub.
-
-Alternative approach:
+Alternative approach (Shorter approach):
 - `git pull upstream main`
 - `git push`
+This synchronizes our fork's main branch with upstream, avoiding manual branch switching on GitHub.
 
+NOTE:
+Sometimes while pushing/making a PR there’s an occurrence of an error. The error occurs because the remote repository has commits that you don't have locally. Git is blocking your push to avoid overwriting those changes. To resolve this error use these commands:
+-‘git fetch origin’: Retrieves updates from the remote repository but doesn't merge them. It lets you view changes without affecting your local branch.
+-‘git pull origin main’: Fetches updates from the main branch of the remote repository and merges them into your local branch.
+Keeps your local branch up-to-date with the remote.
+-‘git push origin main’: Pushes your committed changes from the local main branch to the remote main branch.
+Updates the remote repository with your local changes.
+So, it's a good practice to always pull before pushing while working on a shared project!
 
+The typical workflow for ‘git remote add origin <URL>’ is:
+Purpose: Connects your local project to a remote repository (typically empty) you created on a platform like GitHub.
+
+Workflow:
+You initialize a local Git repository (git init).
+Then, you link it to the remote (git remote add origin <URL>).
+After making changes (then stage and commit), you push them directly (git push origin main)—no need for a pull request (PR) since it's your repository.
+
+The typical workflow for ‘git clone <URL>’ is:
+Purpose: Copies an existing remote repository to your local system, including its history and files.
+Workflow:
+You clone the repository (git clone <URL>).
+If you're contributing (e.g., in a team project), you’ll typically work on a separate branch, make changes (then stage and commit), and push them (remember to pull to avoid conflicts)
+To integrate your changes into the main branch, you often need to create a pull request (PR), if you’re not the owner or it’s a collaborative project.
 
 For visual understanding and working of all the commands and workflow check out:
 Complete Git and GitHub Tutorial by Kunal Kushwaha
-https://youtu.be/apGV9Kg7ics?feature=shared
-
 
 -Hamzah Latif
 (Author) 	
